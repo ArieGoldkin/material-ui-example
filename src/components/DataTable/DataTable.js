@@ -15,6 +15,7 @@ import SelectInput from "../SelectInput/SelectInput";
 import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 import { green, red, orange } from "@material-ui/core/colors";
 import { quantityOptions, rows } from "./data";
+import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
   container: {
@@ -24,11 +25,18 @@ const useStyles = makeStyles({
   table: {
     minWidth: 650,
   },
-
+  boxHeader: {
+    alignItems: "center",
+    display: "flex",
+    paddingLeft: "0.5rem",
+  },
+  oneOfTwo: {
+    color: "#fff",
+  },
   box: {
     background: "#323232",
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
     alignItems: "center",
   },
   iconBtn: {
@@ -62,12 +70,15 @@ const DataTable = () => {
   return (
     <>
       <Box className={classes.box}>
-        <SelectInput
-          start=".000"
-          label="Quantity"
-          id="quantity"
-          options={quantityOptions}
-        />
+        <Box className={classes.boxHeader}>
+          <Typography className={classes.oneOfTwo}>1 of 2</Typography>
+          <SelectInput
+            start=".000"
+            label="Quantity"
+            id="quantity"
+            options={quantityOptions}
+          />
+        </Box>
         <Box>
           <IconButton className={classes.iconBtn}>
             <ReplayIcon className={classes.iconStyle} />
@@ -84,7 +95,7 @@ const DataTable = () => {
           aria-label="a dense table"
         >
           <TableHead>
-              <TableRow>
+            <TableRow>
               <TableCell className={classes.cellStyle}>Trade Date</TableCell>
               <TableCell className={classes.cellStyle} align="left">
                 Side

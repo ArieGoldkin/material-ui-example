@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   labelInput: {
     // fontSize: "0.8rem",
-    transform: " translate(14px, 9px) scale(1)",
+    color: "#fff",
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0.3rem 1rem",
   },
   select: {
-    padding: "0.2rem 0.2rem",
+    color: "black",
   },
 }));
 
@@ -59,18 +59,19 @@ const SelectInput = (props) => {
           className={classes.formControl}
         >
           <InputLabel
-            classes={{ marginDense: classes.labelInput }}
+            className={classes.labelInput}
             htmlFor="outlined-quantity"
           >
             {props.start}
           </InputLabel>
           <Select
+            size="small"
             native
             value={state.age}
             onChange={handleChange}
             label={props.label}
             inputProps={{
-              className: classes.select,
+              className: classes.labelInput,
               quantity: props.start,
               id: props.id,
             }}
@@ -78,7 +79,11 @@ const SelectInput = (props) => {
             <option aria-label="None" value="" />
             {props.options.map((option) => {
               return (
-                <option key={option.id} value={option.value}>
+                <option
+                  className={classes.select}
+                  key={option.id}
+                  value={option.value}
+                >
                   {option.value}
                 </option>
               );
